@@ -1,0 +1,68 @@
+:root {
+    --color-background: #f1f1f1;
+}
+
+.contentInput {
+    background-color: var(--color-background);
+    padding: 8px 16px 8px 16px;
+    border-width: 0;
+    margin: 16px 0 16px 0;
+    width: auto;
+}
+
+.contentInput .labelInput {
+    text-transform: uppercase;
+    padding-bottom: 4px;
+    font-size: .7rem;
+    font-weight: 300;
+    color: rgb(158, 158, 158);
+}
+
+.contentInput input {
+    width: 100%;
+    border: 0;
+    border-width: 0;
+    font-size: .9rem;
+    padding: 0;
+    background-color: var(--color-background);
+}
+
+.contentInput input  {
+    width: 100%;
+    border: 0;
+    border-width: 0;
+    font-size: .9rem;
+    padding: 0;
+    background-color: var(--color-background);
+}
+
+.mySubmit input[type=submit] {
+    width: 100%;
+    border: 0;
+    border-width: 0;
+    border-radius: 32px;
+    font-size: .9rem;
+    padding: 16px 0 16px 0;
+    color: white;
+    background-color: #5dca62;
+}
+  
+.mySubmit input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+.contentInput input:focus {
+    border: 0;
+    outline: none;
+}
+
+
+.contentInput .outlineGreen {
+    outline: thin;
+    outline-color: green;
+}
+
+.contentInput .outlineRed {
+    outline: thin;
+    outline-color: red;
+}
