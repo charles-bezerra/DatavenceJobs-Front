@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { Container, Form } from 'react-bootstrap';
-import Input, { Submit, Textarea, Select } from './input';
+import { Form, Toast } from 'react-bootstrap';
+import { Input, Submit, Textarea, Select } from './input';
 import { api } from '../services/api';
+
+import "./formNewJob.css";
 
 const styleH5 = { 
     paddingTop: "30px", 
@@ -20,6 +22,27 @@ const H5 = (props) => (
 );
 
 
+function MySuccess(props) {
+    return (
+        <Toast show={props.show} onClose={props.toggleShow} style={{ position: "fixed", top: "16px" }}>
+            <Toast.Header>
+                <img
+                    src="holder.js/20x20?text=%20"
+                    className="rounded mr-2"
+                    alt=""
+                />
+                <strong className="mr-auto">DatavenceJobs</strong>
+                <small className="text-success">concluído</small>
+            </Toast.Header>
+
+            <Toast.Body>
+                Parabéns! Sua candidatura foi cadastrada com sucesso.
+            </Toast.Body>
+        </Toast>
+    );
+}
+
+
 export default function FormNewJob (props) {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -30,6 +53,10 @@ export default function FormNewJob (props) {
     const [english, setEnglish] = useState("");
     const [wage_claim, setWage_claim] = useState("");
     const [curriculum, setCurriculum] = useState(null);
+
+    const [show, setShow] = useState(false);
+    
+    const toggleShow = () => setShow(!show);
 
     function handleSubmit(event) {
         event.preventDefault();
@@ -43,34 +70,28 @@ export default function FormNewJob (props) {
             url_linkedin: linkedin,
             wage_claim: wage_claim,
             english_level: english,
-            // curriculum: curriculum
+            url_curriculum: ""
         }
 
-        // const formData = new FormData();
-        // formData.append('namedev', name);
-        // formData.append('emaildev', email);
-        // formData.append('phonedev', phone);
-        // formData.append('details', details);
-        // formData.append('url_github', github);
-        // formData.append('url_linkedin', linkedin);
-        // formData.append('wage_claim', wage_claim);
-        // formData.append('english_level', english)
-
         api 
-        .post("/applied", newApplied)
+        .post(
+            "/applied", 
+            newApplied
+        )
         .then( (response) => {
-            console.log(response);
-            console.log(response.data);
+            toggleShow();
         })
         .catch( (error) => {
-            console.log(error);
+            console.log(error.response);
         });
     }
 
     return (
-    <div style={{ minWidth: "26rem", maxWidth: "29rem" }}>
+    <div className="form-new-job">
     <Form onSubmit={ handleSubmit }>
+
         <H5>Informações pessoais</H5>
+    
         <Input 
             required="required"
             label="Nome Completo"
@@ -79,6 +100,7 @@ export default function FormNewJob (props) {
             value={name}
             onChange={ (event) => setName(event.target.value) }
         />
+    
         <Input
             required="required"
             label="E-MAIL" 
@@ -87,6 +109,7 @@ export default function FormNewJob (props) {
             value={email}
             onChange={ (event) => setEmail(event.target.value) }
         />
+    
         <Input
             required="required"
             type="tel"
@@ -109,6 +132,7 @@ export default function FormNewJob (props) {
 
 
         <H5>Ultimas perguntas</H5>
+
         <Input
             required="required"
             type="url"
@@ -117,6 +141,7 @@ export default function FormNewJob (props) {
             value={linkedin}
             onChange={ (event) => setLinkedin(event.target.value) }
         />
+        
         <Input 
             required="required"
             type="url"
@@ -125,6 +150,7 @@ export default function FormNewJob (props) {
             value={github}
             onChange={ (event) => setGithub(event.target.value) }
         />
+
         <Select
             label="Qual seu nível de Inglês?"
             name="english-level"
@@ -146,6 +172,7 @@ export default function FormNewJob (props) {
 
 
         <H5>Anexe seu currículo em PDF ou DOC</H5>
+
         <Input
             required="required"
             type="file"
@@ -156,6 +183,8 @@ export default function FormNewJob (props) {
 
         <hr/>
         <Submit value="Aplicar"/>
+
+        <MySuccess show={show} toggleShow={toggleShow}/>
     </Form>
     </div>
     );

@@ -1,0 +1,9 @@
+.form-new-job {
+    width: 30rem;
+}
+
+@media screen and (max-width: 520px) and (min-width: 320px) {
+    .form-new-job {
+        width: 18rem;
+    }    
+}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./input.css";
 
 const outlineAction = {
@@ -9,7 +9,7 @@ const outlineAction = {
 
 export function Submit (props) {
     return (
-        <div className="mySubmit rounded-lg shadow">
+        <div className="mySubmit shadow-sm" style={{ borderRadius: "24px" }}>
             <input type="submit" {...props}/>
         </div>
     );
@@ -44,7 +44,7 @@ export function Select ({children: Children, ...props}) {
 
 
 
-export default function Input (props) {
+export function Input (props) {
     return (
         <div className={`shadow-sm rounded-lg contentInput ${ (true) ? outlineAction.correct : outlineAction.incorrect }`}>
             <div className="labelInput">

@@ -17,8 +17,3 @@ export const api = axios.create({
     headers: config.headers,
     proxy: config.proxy
 });
-
-
-export function isAuthenticated() {
-    return true;
-}
