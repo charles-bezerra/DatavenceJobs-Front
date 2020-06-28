@@ -8,7 +8,7 @@ import { api } from "../services/api";
 
 
 const navLocal = (
-<Navbar collapseOnSelect className="shadow" expand="lg" variant="dark" style={{ backgroundColor: "#2D2533" }}>
+<Navbar collapseOnSelect className="shadow" fixed='top' expand="lg" variant="dark" style={{ backgroundColor: "#2D2533" }}>
   <Navbar.Brand href="/">Datavence Jobs</Navbar.Brand>
   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 
@@ -23,7 +23,7 @@ const navLocal = (
   </Navbar.Collapse>
 
   <Form inline className="px-3">
-    <Button variant="light" size="sm" href="/login">Entrar como adm</Button>
+    <Button variant="success" size="sm" href="/login">ADMIN LOGIN</Button>
   </Form>
 </Navbar>
 );
@@ -63,7 +63,7 @@ export default function (props) {
     <>
       { navLocal }
 
-      <Container>
+      <Container className="pt-5">
         <h5 className="pt-4 text-uppercase font-smaller">
           Vagas disponíveis
         </h5>

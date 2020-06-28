@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Button } from 'react-bootstrap';
 
-const JobCard = (props) => (
+const AppleidCard = (props) => (
     <Card className="shadow rounded-lg border-0 my-4">
         <Card.Body> 
             <h2>{ props.title }</h2>
@@ -32,7 +32,7 @@ export default function (props) {
     <>
     {
         props.jobs.map(
-            (e,i) => <JobCard key={`jobs-list-item-${i}`} {...e}/>
+            (e,i) => <AppliedCard key={`appleids-list-item-${i}`} {...e}/>
         )
     }
     </>

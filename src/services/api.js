@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const data = require("./config.json");
+const data = require("../config/api.json");
 
 export const config = {
     headers: {

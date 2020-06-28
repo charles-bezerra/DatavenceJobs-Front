@@ -9,7 +9,12 @@ export default function (props) {
     const [error, setError] = useState(null);
 
     function handleSubmit() {
-        
+        const login = {
+            email: email,
+            password: password,
+        }
+
+
     }
 
     return(
@@ -19,7 +24,7 @@ export default function (props) {
             <center>
                 <h4>Entrar</h4>
             </center>
-            
+
             <hr/>
 
             <Input 
