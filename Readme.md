@@ -38,4 +38,4 @@
 
 <hr style="width: 100%"/>
 
-#### Obs: Lembre-se de baixar, instalar e executar o front-end em seguida <a href="https://github.com/charles-bezerra/DatavenceJobs-Front/">neste link</a>
+#### Obs: Lembre-se de baixar, instalar e executar API em seguida <a href="https://github.com/charles-bezerra/datavencejobs-api/">neste link</a>
