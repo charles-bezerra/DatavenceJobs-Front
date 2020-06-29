@@ -70,7 +70,8 @@ export default function FormNewJob (props) {
             url_linkedin: linkedin,
             wage_claim: wage_claim,
             english_level: english,
-            url_curriculum: ""
+            url_curriculum: "",
+            job: props.job
         }
 
         api 

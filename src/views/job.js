@@ -18,13 +18,14 @@ const styleContentForm = {
 
 
 const Content = (props) => (
-<>
-    <BannerJob {...props} />
-    
-    <section style={ styleContentForm } id="#form">
-        <FormNewJob />
-    </section>
-</>);
+    <>
+        <BannerJob {...props} />
+        
+        <section style={ styleContentForm } id="#form">
+            <FormNewJob job={props} />
+        </section>
+    </>
+);
 
 
 export default function JobView (props) {
@@ -47,6 +48,8 @@ export default function JobView (props) {
         .catch( (error) => {
             console.log(error);
         });
+
+        return () => {};
     }, []);
 
     return content;

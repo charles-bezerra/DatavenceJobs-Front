@@ -1,26 +1,46 @@
 import React, { useState } from 'react';
-import { Card, Form, Button } from 'react-bootstrap';
+import { Card, Form, Button, Alert } from 'react-bootstrap';
 import { Input, Submit } from '../../components/input';
 import "./login.css";
+
+import { api } from '../../services/api';
 
 export default function (props) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState(null);
 
-    function handleSubmit() {
+    function handleSubmit(event) {
+        event.preventDefault();
+
         const login = {
             email: email,
             password: password,
         }
 
+        api
+        .post("/user/login", login)
+        .then( (response) => {
+            const data = response.data;
 
+            if (data.success) {
+                setError(null);
+                localStorage.setItem("user", JSON.stringify(data.t))
+                window.location.reload()
+            }
+            else {
+                setError(data.error);
+            }
+        })
+        .catch((error) => {
+            alert("Error ao conectar a o api!");
+        });
     }
 
     return(
     <div className="login">
     <Card className="shadow border-0 p-4" style={{ width: "350px" }}>
-        <Form>
+        <Form onSubmit={handleSubmit}>
             <center>
                 <h4>Entrar</h4>
             </center>
@@ -45,12 +65,20 @@ export default function (props) {
                 placeholder="Sua senha"
             />
 
+            {
+                (error === null) ? <></> : <Alert variant="danger">{error}</Alert>
+            }
+
             <hr/>
 
             <Submit value="Entrar"/>    
 
             <Button className="pt-3" variant="link" size="sm" block href="/register">
                 Registrar-se
+            </Button>
+
+            <Button className="pt-3" variant="link" size="sm" block href="/">
+                Página inicial
             </Button>
         </Form>
     </Card>

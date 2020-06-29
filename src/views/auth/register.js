@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { Card, Form, Button } from 'react-bootstrap';
+import { Card, Form, Button, Alert } from 'react-bootstrap';
 import { Input, Submit } from '../../components/input';
 import "./login.css";
+
+import { api } from '../../services/api';
 
 export default function (props) {
     const [name, setName] = useState("");
@@ -9,14 +11,39 @@ export default function (props) {
     const [password, setPassword] = useState("");
     const [error, setError] = useState(null);
 
-    function handleSubmit() {
-        
+    function handleSubmit(event) {
+        event.preventDefault();
+
+        const register = {
+            name: name,
+            email: email,
+            password: password,
+        }
+
+        api
+        .post("/user/register", register)
+        .then( (response) => {
+            const data = response.data;
+
+            if (data.success) {
+                setError(null);
+                
+                localStorage.setItem("user", JSON.stringify(data.t));
+                window.location.reload();
+            }
+            else {
+                setError(data.error);
+            }
+        })
+        .catch((error) => {
+            alert("Error ao conectar a o api!");
+        });
     }
 
     return(
     <div className="login">
     <Card className="shadow border-0 p-4" style={{ width: "400px" }}>
-        <Form>
+        <Form onSubmit={handleSubmit}>
             <center>
                 <h4>Registrer-se</h4>
             </center>
@@ -27,7 +54,7 @@ export default function (props) {
                 required="required"
                 type="text"
                 label="Nome completo"
-                value={password}
+                value={name}
                 onChange={(event) => setName(event.target.value)}
                 placeholder="Seu nome completo"
             />
@@ -50,12 +77,20 @@ export default function (props) {
                 placeholder="Sua senha"
             />
 
+            {
+                (error === null) ? <></> : <Alert variant="danger">{error}</Alert>
+            }
+
             <hr/>
 
             <Submit value="Entrar"/>    
 
             <Button className="pt-3" variant="link" size="sm" block href="/login">
                 Já possuo conta.
+            </Button>
+
+            <Button className="pt-3" variant="link" size="sm" block href="/">
+                Página inicial
             </Button>
         </Form>
     </Card>

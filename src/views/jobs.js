@@ -46,27 +46,30 @@ export default function (props) {
 
 
   useEffect(() => {
-      
-    api
-      .get("/job")
-      .then( onResponse )
-      .catch( (error) => {  
-      
-        setContent(errorJobs);
-        console.log(error.message);
-      
-      });
-
-    }, []);
+    function getJobs() {      
+      api
+        .get("/job")
+        .then( onResponse )
+        .catch( (error) => {  
+          setContent(errorJobs);
+          console.log(error.message);
+        });
+    }  
+    
+    getJobs();
+    const interval = setInterval( getJobs, 10000);
+    
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <>
       { navLocal }
 
-      <Container className="pt-5">
-        <h5 className="pt-4 text-uppercase font-smaller">
+      <Container style={{ paddingTop: "70px" }}>
+        <h4 className="pt-4 text-uppercase font-smaller">
           Vagas disponíveis
-        </h5>
+        </h4>
 
         <hr/>
 
