@@ -20,12 +20,13 @@
 ## Configuração
 <p>No arquivo "src/config/api.json" modificar os seguintes atributos</p>
 
+<p>
 {
     "domain": "domain de sua api" <br/>
     "host": "host de sua api" <br/>
     "port": "port de sua api" <br/>
 }
-
+</p>
 ## Como instalar?
 
 <p>No terminal dentro da pasta do projeto executar o seguinte comando: </p>
