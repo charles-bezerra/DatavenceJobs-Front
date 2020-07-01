@@ -30,7 +30,7 @@
 
 => npm install
 
-## Como instalar?
+## Como executar?
 
 <p>No terminal dentro da pasta do projeto executar o seguinte comando: </p>
 
