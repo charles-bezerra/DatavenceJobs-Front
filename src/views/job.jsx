@@ -4,9 +4,8 @@ import { useParams } from 'react-router-dom';
 import FormNewJob from '../components/formNewJob';
 import BannerJob from '../components/bannerJob';
 import ContentLoading from "../components/contentLoading";
-import ListJobs from '../components/listJobs';
 
-import { api } from '../services/api';
+import api from '../services/api';
 
 
 const styleContentForm = {
@@ -42,15 +41,17 @@ export default function JobView (props) {
         }
     }
 
+
     useEffect(() => {
-        api.get(`/job/${id}`)
+        api
+        .get(`/job/${id}`)
         .then( onResponse )
         .catch( (error) => {
             console.log(error);
         });
+        
+    }, [id]);
 
-        return () => {};
-    }, []);
 
     return content;
 }

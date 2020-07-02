@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Card, Button, Modal } from 'react-bootstrap';
+import stream from "../services/stream";
+ 
 
 function DetailsModal (props) {
     const [show, setShow] = useState(false);
-
     const toggleShow = () => setShow(!show);
 
     return (
@@ -59,6 +60,7 @@ const AppliedCard = (props) => (
             <Button
                 download 
                 href={ props.url_curriculum }
+                target="_blank"
                 className="shadow-sm border-0"
                 variant="success">
                 Baixar currículo

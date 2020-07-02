@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Form, Toast } from 'react-bootstrap';
 import { Input, Submit, Textarea, Select } from './input';
-import { api } from '../services/api';
+import api from '../services/api';
+import stream from '../services/stream';
+
 
 import "./formNewJob.css";
 
@@ -58,9 +60,7 @@ export default function FormNewJob (props) {
     
     const toggleShow = () => setShow(!show);
 
-    function handleSubmit(event) {
-        event.preventDefault();
-
+    function submitApplied(url_curriculum) {
         const newApplied = {
             namedev: name,
             emaildev: email,
@@ -70,7 +70,7 @@ export default function FormNewJob (props) {
             url_linkedin: linkedin,
             wage_claim: wage_claim,
             english_level: english,
-            url_curriculum: "",
+            url_curriculum: url_curriculum,
             job: props.job
         }
 
@@ -85,6 +85,23 @@ export default function FormNewJob (props) {
         .catch( (error) => {
             console.log(error.response);
         });
+    }
+
+    function handleSubmit(event) {
+        event.preventDefault();
+
+        const formData = new FormData();
+        formData.append("file", curriculum);
+
+        stream
+            .post("/file", formData)    
+            .then( (response) => {
+                submitApplied(response.data);
+            })
+            .catch( (error) => {
+                console.log(error);
+                console.log("Error ao enviar o arquivo");
+            });
     }
 
     return (
@@ -122,6 +139,7 @@ export default function FormNewJob (props) {
 
 
         <H5>Carta de apresentação</H5>
+
         <Textarea
             rows={6}
             name="details" 
@@ -168,6 +186,7 @@ export default function FormNewJob (props) {
             type="number"
             label="Pretensão salarial" 
             placeholder="R$"
+            value={wage_claim}
             onChange={ (event) => setWage_claim( event.target.value ) }
         />
 
@@ -177,6 +196,7 @@ export default function FormNewJob (props) {
         <Input
             required="required"
             type="file"
+            accept=".pdf, .doc, .docx, .odt"
             label="Seu currículo" 
             placeholder="Adicione seu currículo"
             onChange={ (event) => setCurriculum( event.target.files[0] ) }
@@ -185,7 +205,9 @@ export default function FormNewJob (props) {
         <hr/>
         <Submit value="Aplicar"/>
 
-        <MySuccess show={show} toggleShow={toggleShow}/>
+        <MySuccess 
+            show={show} 
+            toggleShow={toggleShow}/>
     </Form>
     </div>
     );

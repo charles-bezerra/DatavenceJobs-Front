@@ -3,9 +3,10 @@ import { Card, Form, Button, Alert } from 'react-bootstrap';
 import { Input, Submit } from '../../components/input';
 import "./login.css";
 
-import { api } from '../../services/api';
+import api from '../../services/api';
 
 export default function (props) {
+    const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState(null);
@@ -13,20 +14,22 @@ export default function (props) {
     function handleSubmit(event) {
         event.preventDefault();
 
-        const login = {
+        const register = {
+            name: name,
             email: email,
             password: password,
         }
 
         api
-        .post("/user/login", login)
+        .post("/user/register", register)
         .then( (response) => {
             const data = response.data;
 
             if (data.success) {
                 setError(null);
-                localStorage.setItem("user", JSON.stringify(data.t))
-                window.location.reload()
+                
+                localStorage.setItem("user", JSON.stringify(data.t));
+                window.location.reload();
             }
             else {
                 setError(data.error);
@@ -39,13 +42,22 @@ export default function (props) {
 
     return(
     <div className="login">
-    <Card className="shadow border-0 p-4" style={{ width: "350px" }}>
+    <Card className="shadow border-0 p-4" style={{ width: "400px" }}>
         <Form onSubmit={handleSubmit}>
             <center>
-                <h4>Entrar</h4>
+                <h4>Registrer-se</h4>
             </center>
 
             <hr/>
+
+            <Input 
+                required="required"
+                type="text"
+                label="Nome completo"
+                value={name}
+                onChange={(event) => setName(event.target.value)}
+                placeholder="Seu nome completo"
+            />
 
             <Input 
                 required="required"
@@ -73,8 +85,8 @@ export default function (props) {
 
             <Submit value="Entrar"/>    
 
-            <Button className="pt-3" variant="link" size="sm" block href="/register">
-                Registrar-se
+            <Button className="pt-3" variant="link" size="sm" block href="/login">
+                Já possuo conta.
             </Button>
 
             <Button className="pt-3" variant="link" size="sm" block href="/">

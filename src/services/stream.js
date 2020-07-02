@@ -1,11 +1,11 @@
 import axios from 'axios';
 
-const data = require("../config/api.json");
+const data = require("../config/stream.json");
 
 export const config = {
     headers: {
         'Access-Control-Allow-Origin': '*',
-        'Content-Type': 'application/json'
+        'Content-Type': 'multpart/form-data'
     },
     proxy: {
         host: data.host,
@@ -13,10 +13,10 @@ export const config = {
     }
 };
 
-const api = axios.create({
+const stream = axios.create({
     baseURL: data.domain,
     headers: config.headers,
     proxy: config.proxy
 });
 
-export default api;
+export default stream;

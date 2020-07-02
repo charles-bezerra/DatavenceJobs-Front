@@ -1,11 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { Nav, Navbar, Container, Button, Modal, Form, Alert } from 'react-bootstrap';
+import { 
+    Nav, 
+    Navbar, 
+    Container, 
+    Button, 
+    Modal, 
+    Form, 
+    Alert,
+    Card, 
+} from 'react-bootstrap';
 
 import ContentLoading from '../../components/contentLoading';
 import ListApplieds from '../../components/listApplieds';
 import { Input, Textarea } from '../../components/input';
 
-import { api } from "../../services/api";
+import api from "../../services/api";
 
 
 function NewJob(props) {
@@ -44,13 +53,17 @@ function NewJob(props) {
 
     return (
         <>
-        <Button size="sm" variant="success" onClick={props.toggleShow}>Adicionar Vaga</Button>
+        <Button size="sm" variant="outline-success" onClick={props.toggleShow}>
+            Adicionar Vaga
+        </Button>
 
         <Modal show={props.show} onHide={props.toggleShow}>
             <Form onSubmit={ handleSubmit }>
     
                 <Modal.Header closeButton>
-                <Modal.Title>Adicionar vaga</Modal.Title>
+                    <Modal.Title>
+                        Adicionar vaga
+                    </Modal.Title>
                 </Modal.Header>
                 
                 <Modal.Body>
@@ -66,8 +79,8 @@ function NewJob(props) {
                     <Textarea 
                         required="required"
                         type="text"
-                        rows={4} 
                         value={details}
+                        rows={4} 
                         onChange={ (event) => setDetails(event.target.value) }
                         label="Detalhes" 
                         placeholder="detalhes da vaga"/>
@@ -133,16 +146,16 @@ const NavLocal = (props) => {
         <Navbar.Brand href="/home">Administrador</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         
-        <NewJob show={ show } toggleShow={ toggleShow } />
-
         <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto">
             </Nav>
 
-            <Nav>
-                <Nav.Link href="#" style={{ fontSize: "14px" }}>
-                    <Button size="sm" onClick={logout} variant="outline-info">Sair</Button>
-                </Nav.Link>
+            <Nav>    
+                <NewJob show={ show } toggleShow={ toggleShow } />
+                
+                <Button className="ml-2" size="sm" onClick={logout} variant="outline-info">
+                    Sair da conta
+                </Button>
             </Nav>
         </Navbar.Collapse>
 
@@ -193,9 +206,14 @@ export default function (props) {
         <NavLocal/>
     
         <Container style={{ paddingTop: "80px" }}>
-            <div className="d-flex justify-content-between">
+            <div className="d-flex justify-content-between align-items-center align-self-center">
                 <h4><b>Candidaturas da plataforma</b></h4>
-                <h4><b>Total: </b>{amount}</h4>
+
+                <Card className="shadow-sm">
+                    <Card.Body>
+                        <b>Total: </b> { amount }
+                    </Card.Body>
+                </Card>
             </div>
             <hr/>
             {content}
