@@ -20,17 +20,20 @@
 ## Configuração
 <p>No arquivo "src/config/api.json" modificar os seguintes atributos</p>
 
-=> "domain": "domain de sua api" <br/>
-=> "host": "host de sua api" <br/>
-=> "port": "port de sua api" <br/>
-
+<p>
+{ <br/>
+    "domain": "domain de sua api" <br/>
+    "host": "host de sua api" <br/>
+    "port": "port de sua api" <br/>
+}
+</p>
 ## Como instalar?
 
 <p>No terminal dentro da pasta do projeto executar o seguinte comando: </p>
 
 => npm install
 
-## Como instalar?
+## Como executar?
 
 <p>No terminal dentro da pasta do projeto executar o seguinte comando: </p>
 
