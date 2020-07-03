@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Card, Button, Modal } from 'react-bootstrap';
-import stream from "../services/stream";
+// import stream from "../services/stream";
  
 
 function DetailsModal (props) {

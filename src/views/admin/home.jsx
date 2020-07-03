@@ -15,7 +15,7 @@ import ListApplieds from '../../components/listApplieds';
 import { Input, Textarea } from '../../components/input';
 
 import api from "../../services/api";
-
+import { logout } from '../../services/auth';
 
 function NewJob(props) {
     const [title, setTitle] = useState("");
@@ -131,12 +131,6 @@ function NewJob(props) {
 }
 
 
-function logout() {
-    localStorage.removeItem("user")
-    window.location.reload();
-}
-
-
 const NavLocal = (props) => {
     const [show, setShow] = useState(false);
     const toggleShow = () => setShow(!show);
@@ -153,7 +147,7 @@ const NavLocal = (props) => {
             <Nav>    
                 <NewJob show={ show } toggleShow={ toggleShow } />
                 
-                <Button className="ml-2" size="sm" onClick={logout} variant="outline-info">
+                <Button className="ml-2" size="sm" onClick={ logout } variant="outline-info">
                     Sair da conta
                 </Button>
             </Nav>
