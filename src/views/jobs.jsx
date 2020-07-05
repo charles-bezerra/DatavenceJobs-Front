@@ -69,7 +69,6 @@ export default function (props) {
     return (
     <>
         { navLocal }
-
         <Jumbotron style={{ marginTop: "55px" }}>
             <h1>Bem Vindo!</h1>
             <p>
@@ -89,7 +88,6 @@ export default function (props) {
             </h6>
 
             <hr/>
-
             { content }
         </Container>
     </>

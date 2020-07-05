@@ -1,5 +1,5 @@
 {
-    "domain": "https://datavencejobs-api.herokuapp.com",
-    "host": "https://datavencejobs-api.herokuapp.com",
-    "port": ""
+    "domain": "http://localhost:8080",
+    "host": "http://localhost",
+    "port": "8080"
 }

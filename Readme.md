@@ -13,31 +13,32 @@
     <li>React Bootstrap 4</li>
 </ul>
 
-## Dependencias
+## Como instalar?
+<p>No terminal clonar o projeto do repositório remoto</p>
 
+> git clone https://github.com/charles-bezerra/datavencejobs.git
+
+<p>Na pasta do projeto executar o seguinte comando: </p>
+
+> npm install
+
+## Dependencias
 <p>E necessário ter o NodeJS e o NPM instalado em sua máquina</p>
 
 ## Configuração
 <p>No arquivo "src/config/api.json" modificar os seguintes atributos</p>
 
-<p>
-{ <br/>
-    "domain": "domain de sua api" <br/>
-    "host": "host de sua api" <br/>
-    "port": "port de sua api" <br/>
-}
-</p>
-## Como instalar?
-
-<p>No terminal dentro da pasta do projeto executar o seguinte comando: </p>
-
-=> npm install
+```markdown
+"domain": (domain de sua api)
+"host": (host de sua api)
+"port": (port de sua api)
+```
 
 ## Como executar?
 
 <p>No terminal dentro da pasta do projeto executar o seguinte comando: </p>
 
-=> npm start
+> npm start
 
 <hr style="width: 100%"/>
 
