@@ -196,7 +196,7 @@ export default function FormNewJob (props) {
         <Input
             required="required"
             type="file"
-            accept=".pdf, .doc, .docx, .odt"
+            accept=".pdf"
             label="Seu currículo" 
             placeholder="Adicione seu currículo"
             onChange={ (event) => setCurriculum( event.target.files[0] ) }

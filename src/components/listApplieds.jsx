@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Card, Button, Modal } from 'react-bootstrap';
-// import stream from "../services/stream";
- 
+
 
 function DetailsModal (props) {
     const [show, setShow] = useState(false);
@@ -38,7 +37,7 @@ function DetailsModal (props) {
 
 
 const AppliedCard = (props) => (
-    <Card className="shadow-sm rounded-lg my-4">
+    <Card className="shadow rounded-lg my-4">
         <Card.Body> 
             <h3 style={{ color: "#2D2533" }}>{ props.namedev }</h3>
             
@@ -55,11 +54,14 @@ const AppliedCard = (props) => (
                 <p><b>Vaga: </b>{ (props.job) ? props.job.title : <>Desconhecido</>}</p>
             <hr/>
             
-            <DetailsModal text={props.details}/>
+            <DetailsModal text={ props.details }/>
 
             <Button
-                download 
-                href={ props.url_curriculum }
+                download
+                href={ 
+                    (props.url_curriculum) ? 
+                        props.url_curriculum.replace(/"/g, "") : "#" 
+                }
                 target="_blank"
                 className="shadow-sm border-0"
                 variant="success">

@@ -17,6 +17,7 @@ import { Input, Textarea } from '../../components/input';
 import api from "../../services/api";
 import { logout } from '../../services/auth';
 
+
 function NewJob(props) {
     const [title, setTitle] = useState("");
     const [details, setDetails] = useState("");
@@ -209,8 +210,10 @@ export default function (props) {
                     </Card.Body>
                 </Card>
             </div>
+            
             <hr/>
-            {content}
+
+            { content }
         </Container>
     </>
     ); 

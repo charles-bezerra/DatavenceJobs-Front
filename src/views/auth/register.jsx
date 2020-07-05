@@ -85,12 +85,8 @@ export default function (props) {
 
             <Submit value="Entrar"/>    
 
-            <Button className="pt-3" variant="link" size="sm" block href="/login">
+            <Button className="mt-3" variant="link" block href="/login">
                 Já possuo conta.
-            </Button>
-
-            <Button className="pt-3" variant="link" size="sm" block href="/">
-                Página inicial
             </Button>
         </Form>
     </Card>

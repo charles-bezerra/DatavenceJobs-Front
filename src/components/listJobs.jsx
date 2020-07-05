@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, Button } from 'react-bootstrap';
 
+
 const JobCard = (props) => (
     <Card className="shadow rounded-lg border-0 my-4">
         <Card.Body> 
@@ -26,6 +27,7 @@ const JobCard = (props) => (
         </Card.Body>
     </Card>
 );
+
 
 export default function (props) {
     return (
