@@ -38,7 +38,7 @@
 
 <p>No terminal dentro da pasta do projeto executar o seguinte comando: </p>
 
-> npm start
+> npm run dev
 
 <hr style="width: 100%"/>
 
