@@ -1,5 +1,5 @@
 {
-    "domain": "http://datavencejobs-api.herokuapp.com",
-    "host": "http://datavencejobs-api.herokuapp.com",
+    "domain": "https://datavencejobs-api.herokuapp.com",
+    "host": "https://datavencejobs-api.herokuapp.com",
     "port": ""
 }
