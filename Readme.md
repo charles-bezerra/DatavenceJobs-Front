@@ -16,7 +16,7 @@
 ## Como instalar?
 <p>No terminal clonar o projeto do repositório remoto</p>
 
-> git clone https://github.com/charles-bezerra/datavencejobs.git
+> git clone https://github.com/charles-bezerra/datavencejobs-front.git
 
 <p>Na pasta do projeto executar o seguinte comando: </p>
 
